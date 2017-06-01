@@ -7,7 +7,6 @@ class Particle {
   
   public Particle(PVector position) {
     this.speed = 4 * random(0,1) + 1;
-    //this.previousPosition = position;
     this.position = position;
     this.velocity = new PVector(0, 0);
   }
