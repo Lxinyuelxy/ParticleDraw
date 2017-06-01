@@ -7,7 +7,7 @@ class Particle {
   
   public Particle(PVector position) {
     this.speed = 4 * random(0,1) + 1;
-    this.previousPosition = position;
+    //this.previousPosition = position;
     this.position = position;
     this.velocity = new PVector(0, 0);
   }
@@ -24,12 +24,19 @@ class Particle {
     int sx = int(position.x);
     int sy = int(position.y);
     int loc = sx + sy * width;
-    color c = img.pixels[loc];
+    color c = color(0,0,0);
+    try {
+      c = img.pixels[loc];
+    }catch(ArrayIndexOutOfBoundsException e) {
+      println("e.getMessage()");
+      println("img.pixels.length = " + img.pixels.length);
+      println("loc = " + loc);
+    }
     return c;
   }
   
   boolean isEndMove() {
-    return this.position.x > width || this.position.x < 0 ||
-           this.position.y > height || this.position.y < 0;
+    return this.position.x >= width || this.position.x <= 0 ||
+           this.position.y >= height || this.position.y <= 0;
   }
 }

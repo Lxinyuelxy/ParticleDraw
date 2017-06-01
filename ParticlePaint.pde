@@ -13,8 +13,8 @@ void setup() {
 }
 
 void draw() {
-  if(particles.size() < 5000) {
-    particles.add(new Particle(new PVector(random(1) * width, random(1) * height)));
+  if(particles.size() < width * height) {
+    particles.add(new Particle(new PVector(random(0,1) * width, random(0,1) * height)));
   }
   for(int i = particles.size()-1; i >= 0; i--) {
     Particle p = particles.get(i);
